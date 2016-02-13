@@ -61,6 +61,14 @@ This key is used by Azure to connect to GCM to send push notifications.  Assumin
 2. [Register your app for push notifications](https://github.com/Azure/azure-content/blob/master/includes/mobile-services-enable-google-cloud-messaging.md).
 3. [Configure the backend to send push notifications](https://github.com/Azure/azure-content/blob/master/includes/app-service-mobile-android-configure-push.md).
 
+Finally, open the ToDoBroadcastReceiver.cs project file and set your Google project number in the senderIDs variable
+
+    public class ToDoBroadcastReceiver : GcmBroadcastReceiverBase<PushHandlerService>
+    {
+        // Set the Google app ID.
+        public static string[] senderIDs = new string[] { "MY_PROJECT_NUMBER" }; 
+    }
+
 ## Running the app
 
 With both the Mobile App backend and the app configured, you can run the app project.
