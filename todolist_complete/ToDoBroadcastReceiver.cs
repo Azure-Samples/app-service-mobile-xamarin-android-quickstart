@@ -34,7 +34,7 @@ namespace todolist_complete
     public class ToDoBroadcastReceiver : GcmBroadcastReceiverBase<PushHandlerService>
     {
         // Set the Google app ID.
-        public static string[] senderIDs = new string[] { "SENDER_ID" }; //Replace with the Google project ID.   
+        public static string[] senderIDs = new string[] { "{SENDER_PROJECT_NUMBER}" }; //Replace with the Google project number.   
     }
     
     // The ServiceAttribute must be applied to the class.
@@ -45,7 +45,7 @@ namespace todolist_complete
 
         public PushHandlerService() : base(ToDoBroadcastReceiver.senderIDs) { }
 
-        protected override void OnRegistered(Context context, string registrationId)
+        protected override async void OnRegistered(Context context, string registrationId)
         {
             System.Diagnostics.Debug.WriteLine("The device has been registered with GCM.", "Success!");
 
@@ -69,11 +69,11 @@ namespace todolist_complete
                 // to avoid threading errors.
                 ToDoActivity.CurrentActivity.RunOnUiThread(
 
-                //// Register the template with Notification Hubs.
-                //async () => await push.RegisterAsync(registrationId, templates));
+                // Register the template with Notification Hubs.
+                async () => await push.RegisterAsync(registrationId, templates));
                 
-                // Register for GCM notifications.
-                async () => await push.RegisterAsync(registrationId));
+                //// Register for GCM notifications.
+                //async () => await push.RegisterAsync(registrationId,templates));
                 
                 System.Diagnostics.Debug.WriteLine(
                     string.Format("Push Installation Id", push.InstallationId.ToString()));
@@ -83,6 +83,25 @@ namespace todolist_complete
                 System.Diagnostics.Debug.WriteLine(
                     string.Format("Error with Azure push registration: {0}", ex.Message));
             }
+            try
+            {
+                // Define two new tags as a JSON array.
+                var body = new JArray();
+                body.Add("broadcast");
+                body.Add("test");
+
+                // Call the custom API '/api/updatetags/<installationid>' 
+                // with the JArray of tags.
+                var response = await client
+                    .InvokeApiAsync("updatetags/"
+                    + client.InstallationId, body);
+            }
+            catch (MobileServiceInvalidOperationException ex)
+            {
+                System.Diagnostics.Debug.WriteLine(
+                    string.Format("Error with Azure push registration: {0}", ex.Message));
+            }
+
         }
 
         protected override void OnMessage(Context context, Intent intent)

@@ -122,34 +122,14 @@ namespace todolist_complete
             // Only register for push notifications and load data after authentication succeeds.
             if (await Authenticate())
             {
+                // Register the app for push notifications.
+                GcmClient.Register(this, ToDoBroadcastReceiver.senderIDs);
+
                 //Hide the button after authentication succeeds. 
                 FindViewById<Button>(Resource.Id.buttonLoginUser).Visibility = ViewStates.Gone;
 
-                try
-                {
-                    // Register the app for push notifications.
-                    GcmClient.Register(this, ToDoBroadcastReceiver.senderIDs);
-
-                    // Define two new tags as a JSON array.
-                    var body = new JArray();
-                    body.Add("broadcast");
-                    body.Add("test");
-
-                    // Call the custom API '/api/updatetags/<installationid>' 
-                    // with the JArray of tags.
-                    var response = await client
-                        .InvokeApiAsync("updatetags/"
-                        + client.InstallationId, body);
-                }
-                catch (Exception)
-                {
-                    Console.Write("Push registration failed");
-                }
-                finally
-                {
-                    // Load the data.
-                    OnRefreshItemsSelected();
-                }
+                // Load the data.
+                OnRefreshItemsSelected();
             }
         }
 
