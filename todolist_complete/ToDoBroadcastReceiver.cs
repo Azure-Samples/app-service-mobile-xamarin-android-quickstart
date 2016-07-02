@@ -33,8 +33,8 @@ namespace todolist_complete
     Categories = new string[] { "@PACKAGE_NAME@" })]
     public class ToDoBroadcastReceiver : GcmBroadcastReceiverBase<PushHandlerService>
     {
-        // Set the Google app ID.
-        public static string[] senderIDs = new string[] { "{SENDER_PROJECT_NUMBER}" }; //Replace with the Google project number.   
+        // Set the Google sender ID, replace with the Google project number.
+        public static string[] senderIDs = new string[] { "{SENDER_PROJECT_NUMBER}" };     
     }
     
     // The ServiceAttribute must be applied to the class.
@@ -54,7 +54,7 @@ namespace todolist_complete
             var push = client.GetPush();
 
             // Define a message body for GCM.
-            const string templateBodyGCM = "{\"data\":{\"message\":\"$(messageParam)\"}}";
+            var templateBodyGCM = "{\"data\":{\"message\":\"$(messageParam)\"}}";
 
             // Define the template registration as JSON.
             JObject templates = new JObject();

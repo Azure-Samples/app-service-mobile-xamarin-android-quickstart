@@ -1,5 +1,5 @@
 # App Service Mobile completed quickstart for Xamarin.Android apps
-This repository contains an Xamarin.Android app project based on the App Service Mobile Apps quickstart project, which you can download from the [Azure portal](https://portal.azure.com). These projects have been enhanced by the addition of offline sync, authentication, and push notification functionality. This demonstrates how to best integrate the various Mobile Apps features. To learn how to download the Xamarin.Android quickstart app project from the portal, see [Create an Xamarin.Android app](https://azure.microsoft.com/documentation/articles/app-service-mobile-xamarin-android-get-started/). This readme topic contains the following information to help you run the sample app project and to better understand the design decisions.
+This repository contains an Xamarin.Android app project based on the App Service Mobile Apps quickstart project, which you can download from the [Azure portal](https://portal.azure.com). This project have been enhanced by the addition of offline sync, authentication, and push notification functionality. This demonstrates how to best integrate the various Mobile Apps features. To learn how to download the Xamarin.Android quickstart app project from the portal, see [Create a Xamarin.Android app](https://azure.microsoft.com/documentation/articles/app-service-mobile-xamarin-android-get-started/). This readme topic contains the following information to help you run the sample app project and to better understand the design decisions.
 
 + [Overview](#overview)
 + [Configure the Mobile App backend](#configure-the-mobile-app-backend)
@@ -16,9 +16,9 @@ This repository contains an Xamarin.Android app project based on the App Service
 ##Overview
 The projects in this repository are equivalent to downloading the quickstart Xamarin.Android app project from the portal and then completing the following Mobile Apps tutorials:
 
-+ [Enable offline sync for your xamarin-android app](https://azure.microsoft.com/documentation/articles/app-service-mobile-xamarin-android-get-started-offline-data/)
-+ [Add authentication to your xamarin-android app](https://azure.microsoft.com/en-us/documentation/articles/app-service-mobile-xamarin-android-get-started-users/)
-+ [Add push notifications to your xamarin-android app](https://azure.microsoft.com/en-us/documentation/articles/app-service-mobile-xamarin-android-get-started-push/) 
++ [Enable offline sync for your Xamarin.Android app](https://azure.microsoft.com/documentation/articles/app-service-mobile-xamarin-android-get-started-offline-data/)
++ [Add authentication to your Xamarin.Android app](https://azure.microsoft.com/en-us/documentation/articles/app-service-mobile-xamarin-android-get-started-users/)
++ [Add push notifications to your Xamarin.Android app](https://azure.microsoft.com/en-us/documentation/articles/app-service-mobile-xamarin-android-get-started-push/) 
 
 ## Configure the Mobile App backend
 
