@@ -1,5 +1,11 @@
-# App Service Mobile completed quickstart for Xamarin.Android apps
-This repository contains an Xamarin.Android app project based on the App Service Mobile Apps quickstart project, which you can download from the [Azure portal](https://portal.azure.com). This project have been enhanced by the addition of offline sync, authentication, and push notification functionality. This demonstrates how to best integrate the various Mobile Apps features. To learn how to download the Xamarin.Android quickstart app project from the portal, see [Create a Xamarin.Android app](https://azure.microsoft.com/documentation/articles/app-service-mobile-xamarin-android-get-started/). This readme topic contains the following information to help you run the sample app project and to better understand the design decisions.
+---
+services: app-service\mobile, app-service
+platforms: xamarin
+author: ggailey777
+---
+
+# App Service Mobile Apps completed quickstart for Xamarin.Android apps
+This repository contains an Xamarin.Android app project based on the App Service Mobile Apps quickstart project, which you can download from the [Azure portal](https://portal.azure.com). These projects have been enhanced by the addition of offline sync, authentication, and push notification functionality. This demonstrates how to best integrate the various Mobile Apps features. To learn how to download the Xamarin.Android quickstart app project from the portal, see [Create an Xamarin.Android app](https://azure.microsoft.com/documentation/articles/app-service-mobile-xamarin-android-get-started/). This readme topic contains the following information to help you run the sample app project and to better understand the design decisions.
 
 + [Overview](#overview)
 + [Configure the Mobile App backend](#configure-the-mobile-app-backend)
