@@ -34,7 +34,7 @@ namespace todolist_complete
     public class ToDoBroadcastReceiver : GcmBroadcastReceiverBase<PushHandlerService>
     {
         // Set the Google sender ID, replace with the Google project number.
-        public static string[] senderIDs = new string[] { "443317212873" };     
+        public static string[] senderIDs = new string[] { "{SENDER_PROJECT_NUMBER}" };     
     }
     
     // The ServiceAttribute must be applied to the class.

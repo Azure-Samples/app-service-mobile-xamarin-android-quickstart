@@ -33,7 +33,7 @@ namespace todolist_complete
         private EditText textNewToDo;
 
         // URL of the Mobile App backend
-        const string applicationURL = @"https://todolist-complete-nodejs.azurewebsites.net";
+        const string applicationURL = @"https://{your-mobile-app-backend}.azurewebsites.net";
 
         const string localDbFilename = "localstore.db";
         const MobileServiceAuthenticationProvider provider = 
