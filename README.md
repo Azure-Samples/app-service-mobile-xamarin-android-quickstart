@@ -22,15 +22,16 @@ This repository contains an Xamarin.Android app project based on the App Service
 ##Overview
 The projects in this repository are equivalent to downloading the quickstart Xamarin.Android app project from the portal and then completing the following Mobile Apps tutorials:
 
-+ [Enable offline sync for your xamarin-android app](https://azure.microsoft.com/documentation/articles/app-service-mobile-xamarin-android-get-started-offline-data/)
-+ [Add authentication to your xamarin-android app](https://azure.microsoft.com/en-us/documentation/articles/app-service-mobile-xamarin-android-get-started-users/)
-+ [Add push notifications to your xamarin-android app](https://azure.microsoft.com/en-us/documentation/articles/app-service-mobile-xamarin-android-get-started-push/) 
++ [Enable offline sync for your Xamarin.Android app](https://azure.microsoft.com/documentation/articles/app-service-mobile-xamarin-android-get-started-offline-data/)
++ [Add authentication to your Xamarin.Android app](https://azure.microsoft.com/en-us/documentation/articles/app-service-mobile-xamarin-android-get-started-users/)
++ [Add push notifications to your Xamarin.Android app](https://azure.microsoft.com/en-us/documentation/articles/app-service-mobile-xamarin-android-get-started-push/) 
 
 ## Configure the Mobile App backend
 
 Before you can use this sample, you must have created and published a Mobile App backend project that supports  both authentication and push notifications (the backend supports offline sync by default). You can do this either by completing the previously indicated tutorials, or you can use one of the following Mobile Apps backend projects:
 
 + [.NET backend quickstart project for Mobile Apps](https://github.com/azure-samples/app-service-mobile-dotnet-backend-quickstart)
++ [Node.js backend quickstart project for Mobile Apps](https://github.com/azure-samples/app-service-mobile-nodejs-backend-quickstart)
 
 The readme file in this project will direct you to create a new Mobile App backend in App Service, then download, modify, and publish project to App Service.
 
