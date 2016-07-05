@@ -15,7 +15,7 @@ This repository contains an Xamarin.Android app project based on the App Service
 	+ [Configure push notifications](#configure-push-notifications)
 + [Running the app](#running-the-app)
 + [Implementation notes](#implementation-notes)
-	+ [Template push notification registration](#template-push-notification-registration)
+	+ [Push to an authenticated user](#push-to-an-authenticated-user)
 	+ [Client-added push notification tags](#client-added-push-notification-tags)
 	+ [Authenticate first](#authenticate-first)
 
@@ -86,37 +86,20 @@ With both the Mobile App backend and the app configured, you can run the app pro
 	
 	After authentication succeeds, the device is registered for push notifications and any existing data is downloaded from Azure.
 
-2. Stop the Windows Store app and repeat the previous steps for the Windows Phone Store app.
+3. Type text in **Insert a TodoItem**, and then click **Save**.
 
-	At this point, both devices are registered to receive push notifications.
-
-3. Run the Windows Store app again, and type text in **Insert a TodoItem**, and then click **Save**.
-
-   	Note that after the insert completes, both the Windows Store and the Windows Phone apps receive a push notification from WNS. The notification is displayed on Windows Phone even when the app isn't running.
+   	Note that after the insert completes, the app receive a push notification from GCM. The notification is displayed in the notification bar when the app isn't running. Clicking the notification launches the app.
 
 
 ## Implementation notes 
 This section highlights changes made to the original tutorial samples and other design decisions were made when implementing all of the features or Mobile Apps in the same client app. 
 
-###Template push notification registration
-The original push notification tutorial used a native WNS registration. This sample has been changed to use a template registration, which makes it easier to send push notifications to users on multiple clients from a single **send** method call. The following code defines the toast template registration:
-
-	// Define a message body for GCM.
-	const string templateBodyGCM = "{\"data\":{\"message\":\"$(messageParam)\"}}";
-	
-	// Define the template registration as JSON.
-	JObject templates = new JObject();
-	templates["genericMessage"] = new JObject
-	{
-	  {"body", templateBodyGCM }
-	};
-
-
-For more information, see [How to: Register push templates to send cross-platform notifications](https://azure.microsoft.com/documentation/articles/app-service-mobile-dotnet-how-to-use-client-library/#how-to-register-push-templates-to-send-cross-platform-notifications).
+###Push to an authenticated user
+Because the user is authenticated before push registration occurs, the user ID is automatically added as a tag in the installation. The backend then uses this tag to send push notifications only to devices registered to the user doing the insert. For more information, see the readme file for the quickstart completed backend project. 
 
 ###Client-added push notification tags
 
-When a mobile app registers for push notifications using an Azure App Service Mobile Apps backend, there are two default tags that can get added to the registration in Azure Notification Hubs: the installation ID, which is unique to the app on a given device, and the user ID, which is only added when the user has been previously authenticated. Any other tags that get supplied by the client are ignored, which is by design. (Note that this differs from Mobile Services, where the client could supply any tag and there were hooks into the registration process on the backend to validate tags on incoming registrations.) 
+When a mobile app registers for push notifications using a Mobile Apps backend, there are two default tags that can get added to the registration in Azure Notification Hubs: the installation ID, which is unique to the app on a given device, and the user ID, which is only added when the user has been previously authenticated. Any other tags that get supplied by the client are ignored, which is by design. (Note that this differs from Mobile Services, where the client could supply any tag and there were hooks into the registration process on the backend to validate tags on incoming registrations.) 
 
 Because the client can’t add tags and at the same time there is not service-side hooks into the push notification registration process, the client needs to do the work of adding new tags to a given registration. In this sample, an `/updatetags` endpoint in the backend lets the client add tags to their push registration. The client calls that endpoint to create new tags, as you can see in the following: 
 
